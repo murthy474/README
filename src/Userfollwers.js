@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import {
   Platform,FlatList,
-  StyleSheet,
+  StyleSheet,Image,
   Text,
   View,
   TouchableHighlight
@@ -57,11 +57,25 @@ export default class Userfollwers extends Component{
       }
       userdata(data){
             return(
-                <View>
-                   <Text>{data.login}</Text>     
+                <View style={{alignItems:'center',justifyContent:'center',alignSelf:'center',borderColor:'black',borderWidth:0.5,margin:10}}>
+                    {this.renderimage(data)}
+                   <Text style={{alignSelf:'center',fontSize:14,margin:5}}>{data.login}</Text>     
                 </View>
             );
       }
+      renderimage(imagedata){
+        if(imagedata.avatar_url !== ""){
+           return(
+               <View style={{justifyContent:'center',alignItems:'center'}}>
+              <Image source={{ uri: imagedata.avatar_url }}
+              style={{ width:150, height: 150, resizeMode: 'cover' }} />    
+              </View>
+           );
+
+        }else{
+            return false;
+        }
+    }
     render() {
         return(
 
